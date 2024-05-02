@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Лапша</title>
+{% endblock title %}
+
+{% block content %}
+    {% for i in result %}
+    <h3>
+        {% if i.image %}
+        <p><img src="static\img\{{ i.image }}" width="200" alt="{{ i.image }}"></p>
+        {% else %}
+        <p>No foto</p>
+        {% endif %}
+        <p>{{i.name_of_noodles}}</p>
+        <p>{{i.description}}</p>
+        <p><a href="/{{i.country.id}}">{{i.country.name_of_country}}</a></p>
+        {% if i.recommendation%}
+            <span style="color: green;">Куплю еще</span>
+        {% else %}
+        <span style="color: red;">Больше не куплю</span>
+        {% endif %}<br>
+        <h4><a href="/edit_noodles/{{i.id}}">Редактировать</a></h4>
+        <h4><a href="/delete_noodles/{{i.id}}">Удалить</a></h4>
+        ______________________________________________________
+        {% endfor %}
+    </h3>
+
+{% endblock content %}
