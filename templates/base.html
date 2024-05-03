@@ -2,14 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <style>
+        img {
+        height: 180px;
+        }
+
+        body {
+        font-weight: bold;
+        }
+
+     a {
+      color: #0f7afc;
+      text-decoration: none;
+     }
+    button {
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 0 25px;
+	margin: 0 15px 15px 0;
+	outline: none;
+	border: 1px solid #fff;
+	border-radius: 50px;
+	height: 46px;
+	line-height: 46px;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+	color: #444;
+	background-color: #fff;
+	box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+	cursor: pointer;
+	user-select: none;
+	appearance: none;
+	touch-action: manipulation;
+	vertical-align: top;
+	transition: box-shadow 0.2s;
+}
+    </style>
     {% block title %}
     {% endblock title %}
 </head>
 <body>
     <div style="color: #5cbdb9; text-align: center; font-family: sans-serif;">
     <h1 >Лапша быстрого приготовления</h1>
-    <h2><a style="color: #0f7afc; text-decoration: none;" href="/">Главная</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a style="color: #0f7afc; text-decoration: none;"href="{{ url_for('add_noodles') }}">Добавить лапшу</a>
+    <h2><a href="/">Главная</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{{ url_for('add_noodles') }}">Добавить лапшу</a>
     </h2>
     </div>
     {% block content %}

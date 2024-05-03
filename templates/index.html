@@ -11,20 +11,28 @@
     width: 15em; text-align: center; font-family: sans-serif;">
         <div style="font-size: 24px; color: #457595; height: 100px;">{{i.name_of_noodles}}</div>
         {% if i.image %}
-        <img src="static\img\{{ i.image }}" height="180" alt="{{ i.image }}">
+        <img src="static\img\{{ i.image }}" alt="{{ i.image }}">
         {% else %}
         <p>No foto</p>
         {% endif %}
 
-        <p>{{i.description}}</p>
+        <p style="height: 50px;">{{i.description}}</p>
         <p><a href="/{{i.country.id}}">{{i.country.name_of_country}}</a></p>
+        <p>
         {% if i.recommendation%}
             <span style="color: green;">Куплю еще</span>
         {% else %}
         <span style="color: red;">Больше не куплю</span>
         {% endif %}
-        <p><a href="/edit_noodles/{{i.id}}">Редактировать</a>
-        <a href="/delete_noodles/{{i.id}}">Удалить</a></p>
+        </p>
+        <form action="/edit_noodles/{{i.id}}" target="_blank">
+        <button>Редактировать</button>
+        </form>
+
+        <form action="/delete_noodles/{{i.id}}" target="_blank">
+        <button>Удалить</button>
+        </form>
+
     </div>
     {% endfor %}
 </div>
