@@ -5,25 +5,27 @@
 {% endblock title %}
 
 {% block content %}
+<div style="display: flex">
     {% for i in result %}
-    <h3>
+    <div style="margin-left: 10px; padding: 20px; border: 0.1rem outset black;
+    width: 15em; text-align: center; font-family: sans-serif;">
+        <div style="font-size: 24px; color: #457595; height: 100px;">{{i.name_of_noodles}}</div>
         {% if i.image %}
-        <p><img src="static\img\{{ i.image }}" width="200" alt="{{ i.image }}"></p>
+        <img src="static\img\{{ i.image }}" height="180" alt="{{ i.image }}">
         {% else %}
         <p>No foto</p>
         {% endif %}
-        <p>{{i.name_of_noodles}}</p>
+
         <p>{{i.description}}</p>
         <p><a href="/{{i.country.id}}">{{i.country.name_of_country}}</a></p>
         {% if i.recommendation%}
             <span style="color: green;">Куплю еще</span>
         {% else %}
         <span style="color: red;">Больше не куплю</span>
-        {% endif %}<br>
-        <h4><a href="/edit_noodles/{{i.id}}">Редактировать</a></h4>
-        <h4><a href="/delete_noodles/{{i.id}}">Удалить</a></h4>
-        ______________________________________________________
-        {% endfor %}
-    </h3>
-
+        {% endif %}
+        <p><a href="/edit_noodles/{{i.id}}">Редактировать</a>
+        <a href="/delete_noodles/{{i.id}}">Удалить</a></p>
+    </div>
+    {% endfor %}
+</div>
 {% endblock content %}

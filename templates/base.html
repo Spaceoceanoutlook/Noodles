@@ -6,9 +6,12 @@
     {% endblock title %}
 </head>
 <body>
-    <h2><a href="/">Главная</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="{{ url_for('add_noodles') }}">Добавить лапшу</a>
+    <div style="color: #5cbdb9; text-align: center; font-family: sans-serif;">
+    <h1 >Лапша быстрого приготовления</h1>
+    <h2><a style="color: #0f7afc; text-decoration: none;" href="/">Главная</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a style="color: #0f7afc; text-decoration: none;"href="{{ url_for('add_noodles') }}">Добавить лапшу</a>
     </h2>
+    </div>
     {% block content %}
     {% endblock content %}
 </body>

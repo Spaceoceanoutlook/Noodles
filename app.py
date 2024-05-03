@@ -49,7 +49,7 @@ def get_param(param):
 def edit_noodles(noodle_id):
     get_noodle = session.query(Noodles).get(noodle_id)
     if request.method == 'GET':
-        return render_template("edit_noodles.html")
+        return render_template("edit_noodles.html", res=get_noodle)
     if request.method == 'POST':
         if request.form.get('name'):
             get_noodle.name_of_noodles = request.form.get('name')
@@ -70,9 +70,12 @@ def edit_noodles(noodle_id):
         return redirect('/')
 
 
-@app.route("/delete_noodles/<int:noodle_id>", methods=['get'])
+@app.get("/delete_noodles/<int:noodle_id>")
 def delete_noodles(noodle_id):
-    session.query(Noodles).filter(Noodles.id == noodle_id).delete()
+    noodle = session.query(Noodles).filter(Noodles.id == noodle_id).one()
+    filename = noodle.image
+    os.remove(f'static/img/{filename}')
+    session.delete(noodle)
     session.commit()
     return redirect('/')
 
