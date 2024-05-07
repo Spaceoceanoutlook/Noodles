@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block content %}
-<div style="display: flex">
+<div style="display: grid; grid-gap: 5px; grid-template-columns: repeat( auto-fill, 300px )">
     {% for i in result %}
     <div style="margin-left: 10px; padding: 20px; border: 0.1rem outset black;
     width: 15em; text-align: center; font-family: sans-serif;">
@@ -20,9 +20,9 @@
         <p><a href="/{{i.country.id}}">{{i.country.name_of_country}}</a></p>
         <p>
         {% if i.recommendation%}
-            <span style="color: green;">Куплю еще</span>
+            <a href="/{{ i.recommendation }}"><span style="color: green;">Куплю еще</span></a>
         {% else %}
-        <span style="color: red;">Больше не куплю</span>
+            <a href="/{{ i.recommendation }}"><span style="color: red;">Больше не куплю</span></a>
         {% endif %}
         </p>
         <form action="/edit_noodles/{{i.id}}" target="_blank">

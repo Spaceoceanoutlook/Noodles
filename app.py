@@ -45,6 +45,13 @@ def get_param(param):
     return render_template("index.html", result=noodles)
 
 
+@app.get("/<param>")
+def get_true_or_false_noodles(param):
+    print(param)
+    noodles = session.query(Noodles).filter_by(recommendation=param)
+    return render_template("index.html", result=noodles)
+
+
 @app.route("/edit_noodles/<int:noodle_id>", methods=['get', 'post'])
 def edit_noodles(noodle_id):
     get_noodle = session.query(Noodles).get(noodle_id)
@@ -74,7 +81,8 @@ def edit_noodles(noodle_id):
 def delete_noodles(noodle_id):
     noodle = session.query(Noodles).filter(Noodles.id == noodle_id).one()
     filename = noodle.image
-    os.remove(f'static/img/{filename}')
+    if filename:
+        os.remove(f'static/img/{filename}')
     session.delete(noodle)
     session.commit()
     return redirect('/')
