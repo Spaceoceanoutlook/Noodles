@@ -47,8 +47,10 @@ def get_param(param):
 
 @app.get("/<param>")
 def get_true_or_false_noodles(param):
-    print(param)
-    noodles = session.query(Noodles).filter_by(recommendation=param)
+    if param == "True":
+        noodles = session.query(Noodles).filter_by(recommendation=param)
+    else:
+        noodles = session.query(Noodles).filter_by(recommendation=False)
     return render_template("index.html", result=noodles)
 
 
@@ -127,7 +129,7 @@ def add_noodles():
 def get_json_all_noodles():
     noodles = session.query(Noodles)
     noodles_schema = NoodlesSchema(many=True)
-    result = noodles_schema.dump(noodles)
+    result = noodles_schema.dumps(noodles, ensure_ascii=False)
     return result
 
 

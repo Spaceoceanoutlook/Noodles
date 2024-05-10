@@ -19,7 +19,7 @@
         <p style="height: 50px;">{{i.description}}</p>
         <p><a href="/{{i.country.id}}">{{i.country.name_of_country}}</a></p>
         <p>
-        {% if i.recommendation%}
+        {% if i.recommendation %}
             <a href="/{{ i.recommendation }}"><span style="color: green;">Куплю еще</span></a>
         {% else %}
             <a href="/{{ i.recommendation }}"><span style="color: red;">Больше не куплю</span></a>
